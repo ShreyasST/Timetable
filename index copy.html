@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Timetable</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/teacher-registration.html">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Teacher Registration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/teacher-list.php">
+                        <i class="fas fa-users"></i>
+                        <span>Teacher List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/timetable-generator.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Timetable Generator</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-icons">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <span class="notification-badge">5</span>
+                    </div>
+                    <i class="fas fa-cog"></i>
+                </div>
+            </header>
+
+            <div class="dashboard-overview">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); margin-left: 85px">
+                            <i class="fas fa-chalkboard-teacher" style="color: white;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <center><h3>Total Teachers</h3></center>
+                            <div class="stat-number" style="justify-content: center; text-align: center;">
+                                <span class="number" >156</span>   
+                                </div> 
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); margin-left: 89px">
+                            <i class="fas fa-book" style="color: white;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <center><h3>Active Courses</h3></center>
+                            <div class="stat-number" style="justify-content: center; text-align: center;">
+                                <span class="number">48</span>
+                                
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); margin-left: 89px">
+                            <i class="fas fa-clock" style="color: white;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <center><h3>Classes Today</h3></center>
+                            <div class="stat-number" style="justify-content: center; text-align: center;">
+                                <span class="number">24</span>
+                               
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); margin-left: 89px">
+                            <i class="fas fa-user-graduate" style="color: white;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <center><h3>Departments</h3></center>
+                            <div class="stat-number" style="justify-content: center; text-align: center;">
+                                <span class="number">12</span>
+                                
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="grid-item schedule">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calendar-alt"></i> Today's Schedule</h3>
+                            <div class="header-actions">
+                                <span class="date">May 15, 2024</span>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                        </div>
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="time-slot">
+                                    <i class="far fa-clock"></i>
+                                    <span>09:00 AM</span>
+                                </div>
+                                <div class="class-details">
+                                    <h4>Physics - Grade 12</h4>
+                                    <div class="class-info">
+                                        <span><i class="fas fa-user"></i> Dr. Smith</span>
+                                        <span><i class="fas fa-location-dot"></i> Room 201</span>
+                                    </div>
+                                </div>
+                                <div class="status ongoing">Ongoing</div>
+                            </div>
+
+                            <div class="schedule-item">
+                                <div class="time-slot">
+                                    <i class="far fa-clock"></i>
+                                    <span>10:30 AM</span>
+                                </div>
+                                <div class="class-details">
+                                    <h4>Mathematics - Grade 11</h4>
+                                    <div class="class-info">
+                                        <span><i class="fas fa-user"></i> Mrs. Johnson</span>
+                                        <span><i class="fas fa-location-dot"></i> Room 105</span>
+                                    </div>
+                                </div>
+                                <div class="status upcoming">Upcoming</div>
+                            </div>
+
+                            <div class="schedule-item">
+                                <div class="time-slot">
+                                    <i class="far fa-clock"></i>
+                                    <span>02:00 PM</span>
+                                </div>
+                                <div class="class-details">
+                                    <h4>Chemistry Lab - Grade 10</h4>
+                                    <div class="class-info">
+                                        <span><i class="fas fa-user"></i> Mr. Davis</span>
+                                        <span><i class="fas fa-location-dot"></i> Lab 3</span>
+                                    </div>
+                                </div>
+                                <div class="status upcoming">Upcoming</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item recent-activities">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Activities</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon new-teacher">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New Teacher Added</h4>
+                                    <p>Sarah Johnson joined as Physics Teacher</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon schedule-update">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Schedule Updated</h4>
+                                    <p>Grade 11 Mathematics schedule modified</p>
+                                    <span class="activity-time">5 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon course-added">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New Course Added</h4>
+                                    <p>Advanced Physics Course added to curriculum</p>
+                                    <span class="activity-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 

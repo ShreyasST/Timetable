@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap fa-2x"></i>
+                <h2>Timetable</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="teacher-registration.html"><i class="fas fa-user-plus"></i> Teacher Registration</a></li>
+                <li><a href="teacher-list.php"><i class="fas fa-users"></i> Teacher List</a></li>
+                <li class="active"><a href="timetable-generator.html"><i class="fas fa-calendar-alt"></i> Timetable Generator</a></li>
+            </ul>
+            <div class="user-info">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Administrator</p>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-icons">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <span class="notification-badge">5</span>
+                    </div>
+                    <i class="fas fa-cog"></i>
+                </div>
+            </header>
+
+            <div class="page-title">
+                <div class="title-wrapper">
+                    <h1>Timetable Generator</h1>
+                    <p>Create and manage class schedules</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-import"></i> Import
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-magic"></i> Generate
+                    </button>
+                </div>
+            </div>
+
+            <div class="timetable-container">
+                <div class="timetable-controls">
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-cog"></i> Basic Settings</h3>
+                        </div>
+                        <form id="timetableSettings">
+                            <div class="settings-grid">
+                                <div class="form-group">
+                                    <label>Academic Year</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-calendar"></i>
+                                        <select id="academicYear" required>
+                                            <option value="2024-2025">2024-2025</option>
+                                            <option value="2023-2024">2023-2024</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Term/Semester</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-clock"></i>
+                                        <select id="semester" required>
+                                            <option value="1">First Semester</option>
+                                            <option value="2">Second Semester</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Class/Grade</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <select id="grade" required>
+                                            <option value="9">Grade 9</option>
+                                            <option value="10">Grade 10</option>
+                                            <option value="11">Grade 11</option>
+                                            <option value="12">Grade 12</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Section</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-users"></i>
+                                        <select id="section" required>
+                                            <option value="A">Section A</option>
+                                            <option value="B">Section B</option>
+                                            <option value="C">Section C</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="quick-actions">
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <span>Working Hours</span>
+                            <p>8:00 AM - 3:00 PM</p>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span>Total Teachers</span>
+                            <p>32 Available</p>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <span>Subjects</span>
+                            <p>12 Subjects</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timetable-grid-container">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Class Schedule</h3>
+                        <div class="schedule-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                    <div class="timetable-wrapper">
+                        <table class="timetable">
+                            <thead>
+                                <tr>
+                                    <th>Day/Time</th>
+                                    <th>8:00 - 9:00</th>
+                                    <th>9:00 - 10:00</th>
+                                    <th>10:00 - 10:30</th>
+                                    <th>10:30 - 11:30</th>
+                                    <th>11:30 - 12:30</th>
+                                    <th>12:30 - 1:30</th>
+                                    <th>1:30 - 2:30</th>
+                                    <th>2:30 - 3:30</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="day-slot">Monday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                                <tr>
+                                    <td class="day-slot">Tuesday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                                <tr>
+                                    <td class="day-slot">Wednesday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                                <tr>
+                                    <td class="day-slot">Thursday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                                <tr>
+                                    <td class="day-slot">Friday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                                <tr>
+                                    <td class="day-slot">Saturday</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot break">Short Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot lunch">Lunch Break</td>
+                                    <td class="subject-slot empty"></td>
+                                    <td class="subject-slot empty"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/timetable-generator.js"></script>
+</body>
+</html> 
