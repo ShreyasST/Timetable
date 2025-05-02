@@ -3,129 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Time Table Generator</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
+    <header>
+        <nav>
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <h2>Timetable</h2>
+                <h1>TimeTable<span>Gen</span></h1>
             </div>
             <ul class="nav-links">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/teacher-registration.html">
-                        <i class="fas fa-user-plus"></i>
-                        <span>Teacher Registration</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/teacher-list.php">
-                        <i class="fas fa-users"></i>
-                        <span>Teacher List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/timetable-generator.html">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Timetable Generator</span>
-                    </a>
-                </li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="user-info">
-                <i class="fas fa-user-circle"></i>
-                <div>
-                    <h4>Admin User</h4>
-                    <p>Administrator</p>
-                </div>
+            <div class="cta-button">
+                <a href="login.html" class="btn">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
             </div>
         </nav>
+    </header>
+    <section id="get-started" class="get-started">
+        <h2>Ready to Simplify Your Scheduling?</h2>
+        <p>Join thousands of satisfied users who have transformed their scheduling process.</p>
+        <a href="signup.html" class="btn btn-large">Get Started for Free</a>
+        <p class="small">No credit card required. Free plan available.</p>
+    </section>
 
-        <main class="content">
-            <header>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Create Perfect Time Tables in Minutes</h1>
+            <p>Streamline your scheduling process with our intelligent time table generator. Save time, avoid conflicts, and optimize your schedule effortlessly.</p>
+            <div class="hero-buttons">
+                <a href="#get-started" class="btn btn-primary">Try It Now</a>
+                <a href="#demo" class="btn btn-secondary">Watch Demo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="preview.png" alt="Time Table Generator Preview">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Fast Generation</h3>
+                <p>Create complete time tables in seconds, not hours.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-ban"></i>
+                <h3>Conflict Detection</h3>
+                <p>Automatically identify and resolve scheduling conflicts.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Customizable</h3>
+                <p>Tailor schedules to your specific requirements and constraints.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-export"></i>
+                <h3>Export Options</h3>
+                <p>Download your timetable in PDF, Excel, or print directly.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-sync"></i>
+                <h3>Real-time Updates</h3>
+                <p>Make changes and see them reflected instantly.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Friendly</h3>
+                <p>Access and edit your timetables on any device.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Input Your Data</h3>
+                <p>Enter your courses, teachers, rooms, and time constraints.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Generate Schedule</h3>
+                <p>Our algorithm creates the optimal timetable based on your inputs.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Review & Adjust</h3>
+                <p>Make any necessary tweaks to perfect your schedule.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Export & Share</h3>
+                <p>Download your timetable or share it with others.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="quote">"This tool saved me hours of manual scheduling work. The conflict detection feature is a lifesaver!"</div>
+                <div class="author">
+                    <img src="https://music.wustl.edu/files/music/People/Sarah%20Johnson.jpeg" alt="User Avatar">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>School Administrator</p>
+                    </div>
                 </div>
-                <div class="header-icons">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class="fas fa-envelope"></i>
-                        <span class="notification-badge">5</span>
-                    </div>
-                    <i class="fas fa-cog"></i>
-                </div>
-            </header>
-
-            <div class="dashboard-overview">
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); margin-left: 85px">
-                            <i class="fas fa-chalkboard-teacher" style="color: white;"></i>
-                        </div>
-                        <div class="stat-info">
-                            <center><h3>Total Teachers</h3></center>
-                            <div class="stat-number" style="justify-content: center; text-align: center;">
-                                <span class="number" >156</span>   
-                                </div> 
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); margin-left: 89px">
-                            <i class="fas fa-book" style="color: white;"></i>
-                        </div>
-                        <div class="stat-info">
-                            <center><h3>Active Courses</h3></center>
-                            <div class="stat-number" style="justify-content: center; text-align: center;">
-                                <span class="number">48</span>
-                                
-                            </div>
-    
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); margin-left: 89px">
-                            <i class="fas fa-clock" style="color: white;"></i>
-                        </div>
-                        <div class="stat-info">
-                            <center><h3>Classes Today</h3></center>
-                            <div class="stat-number" style="justify-content: center; text-align: center;">
-                                <span class="number">24</span>
-                               
-                            </div>
-                        
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); margin-left: 89px">
-                            <i class="fas fa-user-graduate" style="color: white;"></i>
-                        </div>
-                        <div class="stat-info">
-                            <center><h3>Departments</h3></center>
-                            <div class="stat-number" style="justify-content: center; text-align: center;">
-                                <span class="number">12</span>
-                                
-                            </div>
-                          
-                        </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"As a department head, I need to create complex schedules every semester. This tool makes it simple and error-free."</div>
+                <div class="author">
+                    <img src="https://cdn-jjekh.nitrocdn.com/HOAASRyaREoZdocHCUYwlfKAfVkippYL/assets/images/optimized/rev-79e52bc/www.nuclera.com/wp-content/uploads/bb-plugin/cache/michaelchen-2-circle.jpg" alt="User Avatar">
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>University Professor</p>
                     </div>
                 </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"The customization options are incredible. I can account for all our unique scheduling requirements."</div>
+                <div class="author">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sY3-kbYeND3PQWzFEvC7ek3Ot0cyFhIf-g&s" alt="User Avatar">
+                    <div class="author-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p>High School Principal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="get-started" class="get-started">
+        <h2>Ready to Simplify Your Scheduling?</h2>
+        <p>Join thousands of satisfied users who have transformed their scheduling process.</p>
+        <a href="#signup" class="btn btn-large">Get Started for Free</a>
+        <p class="small">No credit card required. Free plan available.</p>
+    </section>
 
-    <script src="js/dashboard.js"></script>
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? We're here to help!</p>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>TimeTable<span>Gen</span></h2>
+                <p>Simplifying scheduling since 2023</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TimeTableGen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>

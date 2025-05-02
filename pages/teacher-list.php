@@ -1,38 +1,20 @@
-
 <?php
 include 'connect.php';
 
-$deptColors = [];
-$sql = "SELECT DISTINCT dept_id FROM departments";
-$results = $conn->query($sql);
+$limit = 10; // entries per page
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$start_from = ($page - 1) * $limit;
 
-if ($results->num_rows > 0) {
-    while ($row = $results->fetch_assoc()) {
-        $department = $row['dept_id'];
-
-        // Assign alternating colors based on the hash value
-        $hash = hexdec(substr(md5($department), 0, 6));
-        $deptColors[$department] = ($hash % 2 == 0) ? "#a0afc5" : "#4361ee"; // Alternates between blue and silver
-    }
-}
-/*$deptColors = [];
-$sql = "SELECT DISTINCT dept_id FROM departments";
-$results = $conn->query($sql);
-
-if ($results->num_rows > 0) {
-    while ($row = $results->fetch_assoc()) {
-        $department = $row['dept_id'];
-
-        // Generate a consistent random color for each department using md5 hash
-        $hash = md5($department);
-        $deptColors[$department] = "#" . substr($hash, 0, 6);
-    }
-}*/
-
-$sql = "SELECT t.*, d.department_name FROM teachers t 
-        INNER JOIN departments d ON t.department = d.dept_id"; 
+// Fetch paginated records
+$sql = "SELECT * FROM teachers LIMIT $start_from, $limit";
 $result = $conn->query($sql);
 
+// Fetch total records for pagination
+$total_query = "SELECT COUNT(*) AS total FROM teachers";
+$total_result = $conn->query($total_query);
+$total_row = $total_result->fetch_assoc();
+$total_entries = $total_row['total'];
+$total_pages = ceil($total_entries / $limit);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +33,7 @@ $result = $conn->query($sql);
                 <h2>Timetable</h2>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="../index.php"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="teacher-registration.html"><i class="fas fa-user-plus"></i> Teacher Registration</a></li>
                 <li class="active"><a href="teacher-list.php"><i class="fas fa-users"></i> Teacher List</a></li>
                 <li><a href="timetable-generator.html"><i class="fas fa-calendar-alt"></i> Timetable Generator</a></li>
@@ -95,11 +77,9 @@ $result = $conn->query($sql);
                     <thead>
                         <tr>
                             <th>Teacher</th>
-                            <th>Department</th>
                             <th>Qualification</th>
                             <th>Contact</th>
                             <th>Experience</th>
-                            <th>Subjects</th> 
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -108,7 +88,6 @@ $result = $conn->query($sql);
                         <?php
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                $deptColor = $deptColors[$row['department']];
                                 echo "<tr>
                                     <td>
                                         <div class='teacher-cell'>
@@ -122,17 +101,11 @@ $result = $conn->query($sql);
                                         </div>
                                     </td>
                                     <td>
-                                        <div class='department-badge' style='background: {$deptColor}; color: #fff; padding: 5px 7px; display: flex; align-items: center; justify-content: center;'>
-                                            <span style='text-align: center;'>{$row['department_name']}</span>
-                                        </div>
-                                    </td>
-                                    <td>
                                         <div class='qualification-info'>
                                             <span class='degree'>{$row['qualification']}</span>
                                             <span class='specialization'>{$row['specialization']}</span>
                                         </div>
                                     </td>
-                                    
                                     <td>
                                         <div class='contact-info'>
                                             <div><i class='fas fa-envelope'></i> {$row['email']}</div>
@@ -142,13 +115,6 @@ $result = $conn->query($sql);
                                     <td>
                                         <div class='experience-cell'>
                                             <span class='years'>{$row['experience']} Years</span>
-                                            
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class='experience-cell'>
-                                        
-                                            <span class='subjects'>{$row['subjects']}</span>
                                         </div>
                                     </td>
                                     <td>
@@ -156,15 +122,21 @@ $result = $conn->query($sql);
                                     </td>
                                     <td>
                                         <div class='action-buttons'>
-                                            <button class='action-btn edit' title='Edit'><i class='fas fa-edit'></i></button>
-                                            <button class='action-btn view' title='View'><i class='fas fa-eye'></i></button>
-                                            <button class='action-btn delete' title='Delete'><i class='fas fa-trash'></i></button>
+                                            <a href='manage-teacher.php?id={$row['teacher_id']}&action=edit' class='action-btn edit' title='Edit'>
+                                                <i class='fas fa-edit'></i>
+                                            </a>
+                                            <a href='manage-teacher.php?id={$row['teacher_id']}&action=view' class='action-btn view' title='View'>
+                                                <i class='fas fa-eye'></i>
+                                            </a>
+                                            <a href='manage-teacher.php?id={$row['teacher_id']}&action=delete' class='action-btn delete' title='Delete' onclick=\"return confirm('Are you sure?');\">
+                                                <i class='fas fa-trash'></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='7'>No teachers found</td></tr>";
+                            echo "<tr><td colspan='6'>No teachers found</td></tr>";
                         }
                         $conn->close();
                         ?>
@@ -173,16 +145,25 @@ $result = $conn->query($sql);
 
                 <div class="table-footer">
                     <div class="table-info">
-                        Showing <span>1</span> to <span>10</span> of <span>50</span> entries
+                        Showing <span><?= min($start_from + $limit, $total_entries) ?></span> 
+                        of <span><?= $total_entries ?></span> entries
                     </div>
                     <div class="pagination">
-                        <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
-                        <button class="page-btn active">1</button>
-                        <button class="page-btn">2</button>
-                        <button class="page-btn">3</button>
-                        <button class="page-btn">4</button>
-                        <button class="page-btn">5</button>
-                        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        <?php if ($page > 1): ?>
+                            <a class="page-btn" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i></a>
+                        <?php else: ?>
+                            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                            <a class="page-btn <?= $i == $page ? 'active' : '' ?>" href="?page=<?= $i ?>"><?= $i ?></a>
+                        <?php endfor; ?>
+
+                        <?php if ($page < $total_pages): ?>
+                            <a class="page-btn" href="?page=<?= $page + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+                        <?php else: ?>
+                            <button class="page-btn" disabled><i class="fas fa-chevron-right"></i></button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
