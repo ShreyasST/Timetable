@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Please fill all fields.");
     }
 
-    $stmt = $conn->prepare("SELECT * FROM admins WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $result = $stmt->get_result();

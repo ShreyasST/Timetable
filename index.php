@@ -61,6 +61,12 @@
                         <span>Timetable Generator</span>
                     </a>
                 </li>
+                <li>
+                    <a href="../dev_proj1/login.php">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Teacher Preferences Entry</span>
+                    </a>
+                </li>
             </ul>
             <div class="user-info">
                 <i class="fas fa-user-circle"></i>

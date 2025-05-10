@@ -6,6 +6,96 @@
     <title>Timetable Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .timetable-wrapper {
+    overflow-x: auto;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.timetable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.timetable th, .timetable td {
+    border: 1px solid #ddd;
+    padding: 20px 30px; /* Increased padding for more width */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.timetable th {
+    background-color: #3a88b8;
+    color: white;
+    font-size: 16px;
+}
+
+.timetable td {
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.day-slot {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 0;
+}
+
+.subject-slot {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.subject-slot strong {
+    font-weight: bold;
+}
+
+.subject-slot.lunch {
+    background-color: #92aac6cd;
+    color: #587ed0;
+    font-style: italic;
+}
+
+.subject-slot:hover {
+    background-color: #e0f7fa;
+    cursor: pointer;
+}
+
+.subject-slot,
+.day-slot {
+    word-wrap: break-word;
+}
+
+/* Adjust column widths to increase the size of cells */
+.timetable th:nth-child(1),
+.timetable td:nth-child(1) {
+    width: 120px; /* Increased width for the first column */
+}
+
+.timetable th:nth-child(n+2),
+.timetable td:nth-child(n+2) {
+    width: 150px; /* Increased width for the time slots */
+}
+
+/* Alternate row colors for better readability */
+.timetable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.timetable tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover effect for rows */
+.timetable tr:hover {
+    background-color: #f1f1f1;
+}
+
+    </style>
 </head>
 <body>
     <div class="container">
@@ -35,17 +125,7 @@
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search...">
                 </div>
-                <div class="header-icons">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class="fas fa-envelope"></i>
-                        <span class="notification-badge">5</span>
-                    </div>
-                    <i class="fas fa-cog"></i>
-                </div>
+                
             </header>
 
             <div class="page-title">
@@ -60,9 +140,12 @@
                     <button class="btn btn-secondary">
                         <i class="fas fa-file-export"></i> Export
                     </button>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-magic"></i> Generate
-                    </button>
+                    <a href="gen_timetable.php" target="_blank">
+    <button class="btn btn-primary">
+        <i class="fas fa-magic"></i> Generate
+    </button>
+</a>
+
                 </div>
             </div>
 
@@ -174,73 +257,74 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="day-slot">Monday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="day-slot">Tuesday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="day-slot">Wednesday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="day-slot">Thursday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="day-slot">Friday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="day-slot">Saturday</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot break">Short Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot lunch">Lunch Break</td>
-                                    <td class="subject-slot empty"></td>
-                                    <td class="subject-slot empty"></td>
-                                </tr>
-                            </tbody>
+    <tr>
+        <td class="day-slot">Monday</td>
+        <td class="subject-slot">Asha Iyer<br>6ENG – English</td>
+        <td class="subject-slot">Meena Rao<br>6MTH – Maths</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Chaitra K<br>6KAN – Kannada</td>
+        <td class="subject-slot">Rajeshwari Bhat<br>6SCI – General Science</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">Random Teacher<br>6PE – Physical Education</td>
+        <td class="subject-slot">Suresh Hegde<br>6HISN – Hindi / Sanskrit</td>
+    </tr>
+    <tr>
+        <td class="day-slot">Tuesday</td>
+        <td class="subject-slot">Deepa R<br>6MOR – Moral Science</td>
+        <td class="subject-slot">Asha Iyer<br>6ENG – English</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Manoj Shetty<br>6MTH – Maths</td>
+        <td class="subject-slot">Sanjay Rao<br>6POL – Political Science</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">G Yogalakshmi<br>6CCA – Co-Curricular Activities</td>
+        <td class="subject-slot">Geetha Patil<br>6KAN – Kannada</td>
+    </tr>
+    <tr>
+        <td class="day-slot">Wednesday</td>
+        <td class="subject-slot">Rajeshwari Bhat<br>6SCI – General Science</td>
+        <td class="subject-slot">Kavita Singh<br>6HISN – Hindi / Sanskrit</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Meena Rao<br>6MTH – Maths</td>
+        <td class="subject-slot">Asha Iyer<br>6ENG – English</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">Random Teacher<br>6PE – Physical Education</td>
+        <td class="subject-slot">Deepa R<br>6MOR – Moral Science</td>
+    </tr>
+    <tr>
+        <td class="day-slot">Thursday</td>
+        <td class="subject-slot">Chaitra K<br>6KAN – Kannada</td>
+        <td class="subject-slot">Asha Iyer<br>6ENG – English</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Manoj Shetty<br>6MTH – Maths</td>
+        <td class="subject-slot">Rajeshwari Bhat<br>6SCI – General Science</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">G Yogalakshmi<br>6CCA – Co-Curricular Activities</td>
+        <td class="subject-slot">Suresh Hegde<br>6HISN – Hindi / Sanskrit</td>
+    </tr>
+    <tr>
+        <td class="day-slot">Friday</td>
+        <td class="subject-slot">Sanjay Rao<br>6POL – Political Science</td>
+        <td class="subject-slot">Deepa R<br>6MOR – Moral Science</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Meena Rao<br>6MTH – Maths</td>
+        <td class="subject-slot">Geetha Patil<br>6KAN – Kannada</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">Asha Iyer<br>6ENG – English</td>
+        <td class="subject-slot">Random Teacher<br>6PE – Physical Education</td>
+    </tr>
+    <tr>
+        <td class="day-slot">Saturday</td>
+        <td class="subject-slot">G Yogalakshmi<br>6CCA – Co-Curricular Activities</td>
+        <td class="subject-slot">Rajeshwari Bhat<br>6SCI – General Science</td>
+        <td class="subject-slot lunch">Short Break</td>
+        <td class="subject-slot">Kavita Singh<br>6HISN – Hindi / Sanskrit</td>
+        <td class="subject-slot">Manoj Shetty<br>6MTH – Maths</td>
+        <td class="subject-slot lunch">Lunch Break</td>
+        <td class="subject-slot">Chaitra K<br>6KAN – Kannada</td>
+        <td class="subject-slot">Deepa R<br>6MOR – Moral Science</td>
+    </tr>
+</tbody>
+
                         </table>
                     </div>
                 </div>

@@ -53,17 +53,7 @@ $total_pages = ceil($total_entries / $limit);
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search teachers...">
                 </div>
-                <div class="header-icons">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class="fas fa-envelope"></i>
-                        <span class="notification-badge">5</span>
-                    </div>
-                    <i class="fas fa-cog"></i>
-                </div>
+                
             </header>
 
             <div class="page-title">
